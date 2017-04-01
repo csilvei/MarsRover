@@ -9,7 +9,7 @@ import static java.lang.Thread.sleep;
 public class Controle {
 
     Rover rover = new Rover();
-    private static final Posicao LIMIT_POSITION = new Posicao(5,5);
+    private static final Posicao limite = new Posicao(5,5);
     public void RoverGo() throws InterruptedException, OutOfBoundException {
         acceptInitialPosition();
         acceptInitialDirection();
@@ -58,6 +58,6 @@ public class Controle {
     }
 
     public static boolean isIllegal(Posicao roverPosition) {
-        return roverPosition.localiza(LIMIT_POSITION);
+        return roverPosition.localiza(limite);
     }
 }

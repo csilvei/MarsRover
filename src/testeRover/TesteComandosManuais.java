@@ -1,4 +1,4 @@
-package rovertest;
+package testeRover;
 
 import org.junit.Test;
 
@@ -10,30 +10,30 @@ import exception.OutOfBoundException;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class HandleAcceptCommandTest {
+public class TesteComandosManuais {
     @Test
-    public void should_arrive_2_3_when_accept_MRMLM_command_at_the_initialPosition_1_1_north() throws OutOfBoundException {
-        //GIVEN
+    public void deve_chegar_2_3_quando_comendo_for_MRMLM_posicao_inicial_1_1_north() throws OutOfBoundException {
+        
         Rover rover = new Rover();
-        Posicao initialPosition = new Posicao(1,1);
-        rover.setPosicao(initialPosition);
+        Posicao posicaoInicial = new Posicao(1,1);
+        rover.setPosicao(posicaoInicial);
         rover.setDirecao(Direcao.NORTH);
-        //WHEN
+        
         rover.comandoInserido("MRMLdafaM");
-        //THEN
+        
         assertThat(rover.getPosicao().getPosicaoX(), is(2));
         assertThat(rover.getPosicao().getPosicaoY(), is(3));
         assertThat(rover.getDirecao(),is(Direcao.NORTH));
     }
     
     @Test(expected = OutOfBoundException.class)
-    public void shouldCatchOutOfBoundException() throws Exception, OutOfBoundException {
-        //GIVEN
+    public void DeveRetornarExcecao() throws Exception, OutOfBoundException {
+        
         Rover rover = new Rover();
-        Posicao initialPosition = new Posicao(1,1);
-        rover.setPosicao(initialPosition);
+        Posicao posicaoInicial = new Posicao(1,1);
+        rover.setPosicao(posicaoInicial);
         rover.setDirecao(Direcao.NORTH);
-        //WHEN
+        
         rover.comandoInserido("MMMMMM");
     }
     
